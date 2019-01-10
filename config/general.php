@@ -20,7 +20,8 @@ return [
         'elevatedSessionDuration' => 360000,
         'aliases' => [
             'basePath' => $_SERVER['DOCUMENT_ROOT'],
-            'baseUrl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']),
+            /*'baseUrl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']),*/
+            'http://woonkrediet.carolineboeykens.be/sociaal-woonkrediet/web/'
         ],
     ],
 
@@ -40,8 +41,8 @@ return [
         'enableTemplateCaching' => false,
         'backupOnUpdate' => false,
         'siteUrl' => [
-            'nl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/nl/',
-            'fr' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/fr/',
+            'nl' => 'http://woonkrediet.carolineboeykens.be/sociaal-woonkrediet/web/nl/',
+            'fr' => 'http://woonkrediet.carolineboeykens.be/sociaal-woonkrediet/web/fr/',
         ],
     ],
 
