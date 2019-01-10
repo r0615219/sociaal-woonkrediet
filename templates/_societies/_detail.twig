@@ -1,0 +1,54 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    <div class="wrapper wrapper--hero">
+        <div class="hoc clear container section--header">
+            <h1>{{ entry.title }}</h1>
+            {% if entry.intro|length %}
+                <div class="group">
+                    <div class="two_third">
+                        {{ entry.intro }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-top">
+        <div class="hoc clear">
+            <div class="group">
+                <div class="two_third first">
+                    {% include '_snippet/_content/_contentBuilder' %}
+                </div>
+                    <div class="one_third block--grey">
+                        <p><strong>{{ entry.title }}</strong></p>
+                    {% if entry.street|length and entry.city|length %}
+                        <p>{{ entry.street }}<br>
+                        {{ entry.postalCode }} {{ entry.city }}</p>
+                        <div class="btmspace-50">
+                            <i class="fa fa-location-arrow"></i> &nbsp;<a class="link" href="https://www.google.be/maps/place/{{ entry.street }},{{ entry.postalCode }}+{{ entry.city }}" target="_blank">Routebeschrijving</a>
+                        </div>
+                    {% endif %}
+                    {% if entry.mail|length or entry.phone|length or entry.fax|length %}
+                        <div class="btmspace-50">
+                            {% if entry.mail|length %}
+                                <p><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:{{ entry.mail }}" target="_blank" class="link">{{ entry.mail }}</a></p>
+                            {% endif %}
+                            {% if entry.phone|length %}
+                                <p><i class="fa fa-phone"></i> &nbsp; <a href="tel:{{ entry.phone }}" target="_blank" class="link">{{ entry.phone }}</a></p>
+                            {% endif %}
+                            {% if entry.fax|length %}
+                                <p><i class="fa fa-fax"></i> &nbsp; {{ entry.fax }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if entry.website|length %}
+                        <div><a href="{{ entry.website }}" target="_blank" class="btn">Bezoek website</a></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

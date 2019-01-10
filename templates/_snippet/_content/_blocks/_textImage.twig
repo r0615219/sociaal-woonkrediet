@@ -1,0 +1,37 @@
+<div class="wrapper wrapper-top">
+    <div class="hoc clear">
+        {% if block.position == 'left' %}
+            <div class="group">
+                <div class="one_half first">
+                    <img src="{{ block.image.one().getUrl() }}" alt="{{ block.image.one().title }}">
+                </div>
+                <div class="one_half">
+                    {{ block.text }}
+                    {% if block.button|length %}
+                        <div>
+                            {{ block.button.getLink({
+                                class: "btn"
+                            }) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="group">
+                <div class="one_half first">
+                    {{ block.text }}
+                    {% if block.button|length %}
+                        <div>
+                            {{ block.button.getLink({
+                                class: "btn"
+                            }) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="one_half">
+                    <img src="{{ block.image.one().getUrl() }}" alt="{{ block.image.one().title }}">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

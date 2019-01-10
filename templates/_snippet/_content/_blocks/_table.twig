@@ -1,0 +1,58 @@
+<div class="wrapper wrapper-top">
+    <div class="hoc clear">
+        <div class="scrollable">
+            <table>
+                {% for row in block.rows %}
+                    {% if loop.first %}
+                        <thead>
+                        <tr>
+                            {% if row.column1|length %}
+                                <th>{{ row.column1 }}</th>
+                                {% set row1 = true %}
+                            {% endif %}
+                            {% if row.column2|length %}
+                                <th>{{ row.column2 }}</th>
+                                {% set row2 = true %}
+                            {% endif %}
+                            {% if row.column3|length %}
+                                <th>{{ row.column3 }}</th>
+                                {% set row3 = true %}
+                            {% endif %}
+                            {% if row.column4|length %}
+                                <th>{{ row.column4 }}</th>
+                                {% set row4 = true %}
+                            {% endif %}
+                            {% if row.column5|length %}
+                                <th>{{ row.column5 }}</th>
+                                {% set row5 = true %}
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                    {% else %}
+                        <tr>
+                            {% if row1 is defined %}
+                                <td>{{ row.column1 }}</td>
+                            {% endif %}
+                            {% if row2 is defined %}
+                                <td>{{ row.column2 }}</td>
+                            {% endif %}
+                            {% if row3 is defined %}
+                                <td>{{ row.column3 }}</td>
+                            {% endif %}
+                            {% if row4 is defined %}
+                                <td>{{ row.column4 }}</td>
+                            {% endif %}
+                            {% if row5 is defined %}
+                                <td>{{ row.column5 }}</td>
+                            {% endif %}
+                        </tr>
+                        {% if loop.last %}
+                            </tbody>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+{#
+<nav id="mainav" class="hoc clear">
+    <ul class="clear mobile-hide">
+        <li class="active"><a href="{{ siteUrl }}">Home</a></li>
+        <li><a class="drop" href="{{ siteUrl }}">Info</a>
+            <ul>
+                <li><a href="{{ siteUrl }}">Voordelen</a></li>
+                <li><a href="{{ siteUrl }}">Voorwaarden</a></li>
+                <li><a href="{{ siteUrl }}">Verkoopswaarde</a></li>
+            </ul>
+        </li>
+        <li><a class="drop" href="{{ siteUrl }}">Maatschappijen</a>
+            <ul>
+                <li><a href="{{ siteUrl }}">Antwerpen</a></li>
+                <li><a href="{{ siteUrl }}">Henegouwen</a></li>
+                <li><a href="{{ siteUrl }}">Limburg</a></li>
+                <li><a href="{{ siteUrl }}">Luxemburg</a></li>
+                <li><a href="{{ siteUrl }}">Luik</a></li>
+                <li><a href="{{ siteUrl }}">Namen</a></li>
+                <li><a href="{{ siteUrl }}">Oost-Vlaanderen</a></li>
+                <li><a href="{{ siteUrl }}">Vlaams-Brabant</a></li>
+                <li><a href="{{ siteUrl }}">Waals-Brabant</a></li>
+                <li><a href="{{ siteUrl }}">West-Vlaanderen</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Over ons</a></li>
+        <li><a href="{{ craft.entries.section('contact').one().getUrl() ?? '#' }}">Contact</a></li>
+    </ul>
+</nav>#}
+
+<nav id="mainav" class="hoc clear">
+    <ul class="clear mobile-hide">
+        {% for item in mainNavigation.navigation.all() %}
+            <li>
+                <a {% if item.dropdownItems|length %}class="drop"{% endif %}
+                   href="{{ item.linkItem.one().url }}">{{ item.linkItem.one().title }}</a>
+                {% if item.dropdownItems|length %}
+                    <ul>
+                        {% for child in item.dropdownItems.all() %}
+                            <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

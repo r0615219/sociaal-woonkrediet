@@ -1,0 +1,18 @@
+{% extends '_layout' %}
+
+{% block content %}
+    <div class="wrapper wrapper--hero">
+        <div class="hoc clear container section--header">
+            <h1>{{ entry.title }}</h1>
+            {% if entry.intro|length %}
+                <div class="group">
+                    <div class="two_third">
+                        {{ entry.intro }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include '_snippet/_content/_contentBuilder' %}
+{% endblock %}

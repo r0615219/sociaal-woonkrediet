@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>{{ entry.title }} | {{ siteName }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{ craft.app.config.general.aliases.baseUrl }}/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ craft.app.config.general.aliases.baseUrl }}/styles/custom.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" type="image/png" href="{{ craft.app.config.general.aliases.baseUrl }}/images/favicon.gif"/>
+    {% include '_snippet/_global/_seo' %}
+</head>
+<body>
+    {% include '_snippet/_global/_header' %}
+
+    {% block content %}{% endblock %}
+
+    {% include '_snippet/_global/_footer' %}
+
+<!-- JAVASCRIPTS -->
+<script src="{{ craft.app.config.general.aliases.baseUrl }}/scripts/jquery.min.js"></script>
+<script src="{{ craft.app.config.general.aliases.baseUrl }}/scripts/jquery.mobilemenu.js"></script>
+<script src="{{ craft.app.config.general.aliases.baseUrl }}/scripts/jquery.flexslider-min.js"></script>
+</body>
+</html>

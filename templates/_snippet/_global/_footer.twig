@@ -1,0 +1,51 @@
+<div class="wrapper row4 bgded" id="footer">
+    <footer id="footer" class="hoc clear">
+        <div class="center btmspace-50">
+            <h2 class="heading">{{ siteName }}</h2>
+            <nav>
+                <ul class="nospace inline pushright uppercase">
+                    {% for item in mainNavigation.navigation.all() %}
+                        <li><a class="footer-link" href="{{ item.linkItem.one().url }}">{{ item.linkItem.one().title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <hr class="btmspace-50">
+        <div class="group">
+            <div class="one_half first">
+                {% if footerInfo.text|length %}
+                    {{ footerInfo.text }}
+                {% endif %}
+            </div>
+            <div class="one_half">
+                <ul class="nospace btmspace-30 linklist contact">
+                    {% if mainInfo.street|length and mainInfo.postalCode|length and mainInfo.city|length %}
+                        <li><i class="fa fa-map-marker"></i>
+                            <address>
+                                {{ mainInfo.street }},<br>
+                                {{ mainInfo.postalCode }} {{ mainInfo.city }}
+                            </address>
+                        </li>
+                    {% endif %}
+                    {% if mainInfo.phone|length %}
+                        <li><i class="fa fa-phone"></i> {{ mainInfo.phone }}</li>
+                    {% endif %}
+                    {% if mainInfo.fax|length %}
+                        <li><i class="fa fa-fax"></i> {{ mainInfo.fax }}</li>
+                    {% endif %}
+                    {% if mainInfo.mail|length %}
+                        <li><i class="fa fa-envelope-o"></i> {{ mainInfo.mail }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+        <p class="fl_left">&copy; {{ now|date('Y') }} - All Rights Reserved - {{ siteName }} |
+            {% set privacy = craft.entries.section('privacy').one() %}
+        <a class="link" href="{{ privacy.url }}">{{ privacy.title }}</a></p>
+        <p class="fl_right">Powered by <a class="link" target="_blank" href="http://carolineboeykens.be">carolineboeykens</a></p>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="wrapper wrapper-top">
+    <div class="hoc clear">
+        <div class="group">
+            <div class="two_third first">
+                {{ block.text }}
+                {% if block.button|length %}
+                    <div>
+                        {{ block.button.getLink({
+                            class: "btn"
+                        }) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

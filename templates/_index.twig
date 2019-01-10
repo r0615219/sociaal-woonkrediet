@@ -1,0 +1,72 @@
+{% extends '_layout' %}
+
+{% block content %}
+    <div class="wrapper bgded overlay"
+         style="background-image:url('{{ entry.heroImage.one().getUrl() ?? fallback.image.one().getUrl() }}');">
+        <div id="pageintro" class="hoc clear">
+            <div class="flexslider basicslider">
+                <ul class="slides">
+                    {% for item in entry.slider.all() %}
+                        <li>
+                            <article>
+                                <p>{{ item.subtitle }}</p>
+                                <h3 class="heading">{{ item.blockTitle }}</h3>
+                                <p>{{ item.text }}</p>
+                                {% if item.button|length %}
+                                    <footer>{{ item.button.getLink({
+                                            class: 'btn'
+                                        }) }}</footer>
+                                {% endif %}
+                            </article>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% if entry.infoBlocks and entry.infoBlocks|length %}
+        <div class="wrapper row2">
+            <div class="hoc container clear">
+                <ul class="nospace group figures">
+                    {% for block in entry.infoBlocks.all() %}
+                        <li class="one_third {% if loop.first %}first{% endif %}">
+                            <figure><img src="{{ block.image.one().getUrl('overviewSquare') }}"
+                                         alt="{{ block.linkfield.one().title }}">
+                                <figcaption><a href="{{ block.linkfield.one().getUrl() }}">{{ block.blockTitle }}</a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if entry.greyBlocks|length %}
+        <div class="wrapper">
+            <div class="hoc container clear">
+                <div class="group flex">
+                    {% for block in entry.greyBlocks.all() %}
+                        <div class="one_half block--grey {% if loop.first %}first{% endif %}">
+                            {% if block.blockTitle|length %}
+                                <h3>{{ block.blockTitle }}</h3>
+                            {% endif %}
+                            {% if block.text %}
+                                <div>{{ block.text }}</div>
+                            {% endif %}
+                            {% if block.button %}
+                                {{ block.button.getLink({
+                                    class: 'link'
+                                }) }}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% include '_snippet/_content/_contentBuilder' %}
+
+{% endblock %}

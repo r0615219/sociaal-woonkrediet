@@ -1,0 +1,66 @@
+{% extends '_layout' %}
+
+{% block content %}
+    <div class="wrapper wrapper--hero">
+        <div class="hoc clear container section--header">
+            <h1>{{ entry.title }}</h1>
+            {% if entry.intro|length %}
+                <div class="group">
+                    <div class="two_third">
+                        {{ entry.intro }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% set provincies = craft.entries.section('societies') %}
+    {% if provincies|length %}
+        <div class="wrapper">
+            <div class="hoc clear container">
+                <ul class="nospace group figures">
+                    {% for block in provincies.all() %}
+                        <li class="one_third btmspace-30 {% if loop.index in [1,4,7,10,13,16,19,21,24,27,30] %}first{% endif %}">
+                            <figure>
+                                <img src="{{ block.image.one().getUrl('overviewSquare') }}"
+                                     alt="{{ block.title }}">
+                                <figcaption>
+                                    <a href="{{ block.url }}">{{ block.title }}</a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    {#<div class="wrapper">
+        <script type="text/javascript">
+            var points = [];
+            {% for item in craft.entries.section('societyDetail').all() %}
+            var point = {
+                title: "{{ item.title }}",
+                street: "{{ item.street }}",
+                city: "{{ item.city }}",
+                latitude: {{ item.latitude }},
+                longitude: {{ item.longitude ?? '' }},
+                mail: "{{ item.mail ?? '' }}",
+                phone: "{{ item.phone ?? '' }}",
+                website: "{{ item.website ?? '' }}",
+                url: "{{ item.url }}",
+            };
+            points.push(point);
+            {% endfor %}
+        </script>
+        <div id="map" class="map map-wide"></div>
+    </div>
+
+    <script type="text/javascript" src="{{ craft.app.config.general.aliases.baseUrl }}/scripts/maps-multiple.js"></script>
+    #}{# TODO: api key aanpassen #}{#
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUuzDdWtlCyDyuPIVvt9CJk6gnJtE-gt0&callback=initMap"></script>#}
+
+    {#{% include '_snippet/_content/_contentBuilder' %}#}
+
+
+{% endblock %}
