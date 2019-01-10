@@ -31,28 +31,5 @@ use craft\base\Component;
  */
 class CustomService extends Component
 {
-    public function geocode($element)
-    {
 
-        if ( !$element->latitude && ! $element->longitude) {
-            if ($element->street or $element->city) {
-                $address = $element->street . ' ' . $element->city;
-            } else {
-                $address = '';
-            }
-            if ($address) {
-                $client = new Client( [ 'base_uri' => 'https://maps.googleapis.com' ] );
-                //TODO: api key aanpassen naar betaalde woonkrediet api
-                $res    = $client->request( 'GET', 'maps/api/geocode/json?address=' . urlencode( $address ) . '&key=AIzaSyBUuzDdWtlCyDyuPIVvt9CJk6gnJtE-gt0', [ 'allow_redirects' => false ] );
-                $json   = json_decode( $res->getBody()->getContents(), true );
-                if ( $json['status'] == 'OK' ) {
-                    if ( $json['results'][0]['geometry']['location'] ) {
-                        $element->latitude  = $json['results'][0]['geometry']['location']['lat'] . '';
-                        $element->longitude = $json['results'][0]['geometry']['location']['lng'] . '';
-                    }
-                }
-            }
-        }
-        return $element;
-    }
 }

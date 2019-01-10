@@ -91,12 +91,5 @@ class Custom extends Module
             );
         }
 
-        /*Event::on(Elements::class, Elements::EVENT_BEFORE_SAVE_ELEMENT, function(Event $event) {
-            if ($event->element instanceof \craft\elements\Entry) {
-                if ($event->element->sectionId == '5') {
-                    Custom::$instance->customService->geocode($event->element);
-                }
-            }
-        });*/
     }
 }
