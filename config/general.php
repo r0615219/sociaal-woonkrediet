@@ -11,21 +11,13 @@
 return [
     // Global settings
     '*' => [
-        // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
-
-        // Enable CSRF Protection (recommended)
+        'defaultWeekStartDay' => 1,
         'enableCsrfProtection' => true,
-
-        // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
-
-        // Control Panel trigger word
+        'defaultCpLanguage' => 'en_GB',
         'cpTrigger' => 'admin',
-
-        // The secure key Craft will use for hashing and encrypting data
         'securityKey' => getenv('SECURITY_KEY'),
-
+        'elevatedSessionDuration' => 360000,
         'aliases' => [
             'basePath' => $_SERVER['DOCUMENT_ROOT'],
             'baseUrl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']),
@@ -34,35 +26,32 @@ return [
 
     // Dev environment settings
     'dev' => [
-        // Base site URL
+        'enableTemplateCaching' => false,
+        'backupOnUpdate' => false,
+        'devMode' => true,
         'siteUrl' => [
             'nl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/nl/',
             'fr' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/fr/',
-            //'en' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/en'
         ],
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true,
     ],
 
     // Staging environment settings
     'staging' => [
-        // Base site URL
-        // Base site URL
+        'enableTemplateCaching' => false,
+        'backupOnUpdate' => false,
         'siteUrl' => [
             'nl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/nl/',
             'fr' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/fr/',
-            //'en' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/en'
         ],
     ],
 
     // Production environment settings
     'production' => [
-        // Base site URL
-        // Base site URL
+        'enableTemplateCaching' => true,
+        'backupOnUpdate' => true,
         'siteUrl' => [
-            'nl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/nl/',
+            'nl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/nl',
             'fr' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/fr/',
-            //'en' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']) . '/en'
         ],
     ],
 ];
