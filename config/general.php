@@ -20,8 +20,8 @@ return [
         'elevatedSessionDuration' => 360000,
         'aliases' => [
             'basePath' => $_SERVER['DOCUMENT_ROOT'],
-            /*'baseUrl' => strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME']),*/
-            'http://woonkrediet.carolineboeykens.be/sociaal-woonkrediet/web/'
+            'http://woonkrediet.carolineboeykens.be/sociaal-woonkrediet/web/',
+            /*'http://woonkrediet.local.be/',*/
         ],
     ],
 

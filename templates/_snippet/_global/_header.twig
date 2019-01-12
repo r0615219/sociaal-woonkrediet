@@ -1,12 +1,12 @@
 <div class="wrapper row0">
     <div id="topbar" class="hoc clear">
-        <div class="fl_left">
+        {#<div class="fl_left">
             <ul>
                 <li><i class="fa fa-envelope-o"></i> <a href="mailto:info@sociaal-woonkrediet.be" target="_blank">info@sociaal-woonkrediet.be</a>
                 </li>
                 <li><i class="fa fa-phone"></i> <a href="tel:+32 25 28 08 28" target="_blank">+32 25 28 08 28</a></li>
             </ul>
-        </div>
+        </div>#}
         {% include '_snippet/_nav/_language' %}
     </div>
 </div>
@@ -19,7 +19,7 @@
                 </a>
             </div>
         </div>
-        {% if mainInfo.street and mainInfo.postalCode|length and mainInfo.city|length %}
+        {#{% if mainInfo.street and mainInfo.postalCode|length and mainInfo.city|length %}
             <div id="quickinfo" class="fl_right">
                 <ul class="nospace rightalign right">
                     <li>
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-        {% endif %}
+        {% endif %}#}
     </header>
     {% include '_snippet/_nav/_main' %}
 </div>

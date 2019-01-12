@@ -3,5 +3,5 @@
 /vendor
 .DS_Store
 /storage/*
-/public/files/*
+/web/files/*
 /node_modules/*

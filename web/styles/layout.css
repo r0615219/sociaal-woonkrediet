@@ -34,9 +34,10 @@ File: Layout CSS
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{padding:50px 0;}
+#header{padding:40px 0; position:relative;}
 
 #header #logo *{margin:0; padding:0; line-height:1;}
+#header #logo {display: block; position: absolute; top: -40px; width: 100px;}
 #header #logo h1{margin-top:8px; font-size:24px;}
 #header #logo p{margin-top:-2px; font-size:.9rem; text-transform:lowercase;}
 
@@ -347,8 +348,12 @@ table a, #comments a{background-color:inherit;}
 
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-width:978px){
+@media screen and (min-width:1017px){
 	.hoc{max-width:978px;}
+}
+
+@media screen and (max-width:1017px){
+	.hoc{max-width:90%;}
 }
 
 
@@ -375,8 +380,9 @@ table a, #comments a{background-color:inherit;}
 
 
 @media screen and (max-width:750px){
+	#header #logo {top: -45px;}
 	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
-	.fl_left, .fl_right{display:block; float:none;}
+	.fl_left, .fl_right{display:block;}
 	.group .group > *:last-child, .clear .clear > *:last-child, .clear .group > *:last-child, .group .clear > *:last-child{margin-bottom:0;}/* Experimental - Needs more testing in different situations, stops double margin when stacking */
 	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
 
@@ -396,6 +402,7 @@ table a, #comments a{background-color:inherit;}
 
 
 @media screen and (max-width:450px){
+    #header #logo {top: -45px; left: 34%}
 	#topbar ul li{margin:2px; padding-right:0; border-right:none;}
 }
 
