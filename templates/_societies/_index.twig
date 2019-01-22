@@ -35,32 +35,4 @@
         </div>
     {% endif %}
 
-    {#<div class="wrapper">
-        <script type="text/javascript">
-            var points = [];
-            {% for item in craft.entries.section('societyDetail').all() %}
-            var point = {
-                title: "{{ item.title }}",
-                street: "{{ item.street }}",
-                city: "{{ item.city }}",
-                latitude: {{ item.latitude }},
-                longitude: {{ item.longitude ?? '' }},
-                mail: "{{ item.mail ?? '' }}",
-                phone: "{{ item.phone ?? '' }}",
-                website: "{{ item.website ?? '' }}",
-                url: "{{ item.url }}",
-            };
-            points.push(point);
-            {% endfor %}
-        </script>
-        <div id="map" class="map map-wide"></div>
-    </div>
-
-    <script type="text/javascript" src="{{ craft.app.config.general.aliases.baseUrl }}/scripts/maps-multiple.js"></script>
-    #}{# TODO: api key aanpassen #}{#
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUuzDdWtlCyDyuPIVvt9CJk6gnJtE-gt0&callback=initMap"></script>#}
-
-    {#{% include '_snippet/_content/_contentBuilder' %}#}
-
-
 {% endblock %}
