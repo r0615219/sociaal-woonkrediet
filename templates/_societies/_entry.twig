@@ -17,7 +17,7 @@
 
     {% set q = craft.app.request.getParam('q') %}
 
-    {% set societies = craft.entries.section('societyDetail').orderBy('city ASC') %}
+    {% set societies = craft.entries.section('societyDetail').orderBy('city ASC').relatedTo(entry) %}
     {% if societies|length %}
 
         {% set cities = [] %}
@@ -27,7 +27,7 @@
                     <div class="hoc">
                         <div class="inline cities">
                             <span>Filter: &nbsp; </span>
-                            {% for society in societies.all() if society.provincie.label == entry.title %}
+                            {% for society in societies.all() %}
                                 {% if society.city not in cities %}
                                     {% if q is defined and q == society.city %}
                                         <a href="{{ entry.url }}" class="city-active">
@@ -48,12 +48,12 @@
         </div>
 
         {% if q is defined and q|length %}
-            {% set societies = craft.entries.section('societyDetail').orderBy('city ASC').city(q) %}
+            {% set societies = societies.city(q) %}
         {% endif %}
 
         <div class="wrapper">
             <div class="hoc clear container">
-                {% for society in societies.all() if society.provincie.label == entry.title %}
+                {% for society in societies.all() %}
                     <a href="{{ society.url }}" class="btmspace-30 block--grey block--location">
                         <div class="info--location">
                             <h3>{{ society.title }}</h3>
