@@ -2,10 +2,10 @@
     <div class="hoc clear">
         {% if block.position == 'left' %}
             <div class="group">
-                <div class="one_half first">
+                <div class="one_third first">
                     <img src="{{ block.image.one().getUrl() }}" alt="{{ block.image.one().title }}">
                 </div>
-                <div class="one_half">
+                <div class="two_third">
                     {{ block.text }}
                     {% if block.button|length %}
                         <div>
@@ -18,7 +18,7 @@
             </div>
         {% else %}
             <div class="group">
-                <div class="one_half first">
+                <div class="two_third first">
                     {{ block.text }}
                     {% if block.button|length %}
                         <div>
@@ -28,7 +28,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="one_half">
+                <div class="one_third">
                     <img src="{{ block.image.one().getUrl() }}" alt="{{ block.image.one().title }}">
                 </div>
             </div>
