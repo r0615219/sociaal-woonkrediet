@@ -1,11 +1,14 @@
-{% set seo = getSeoField() %}
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# SEO Start #}
+    {# Tip: You can pass the handle of your SEO field - getSeoField('mySeoFieldHandle') #}
+    {% set seo = getSeoField() %}
 
-{% if seo is null or seo.title == '' %}
-    {% set seo = craft.seo.custom(siteName, '', false) %}
-{% endif -%}
+    {% if seo is null or seo.title == '' %}
+        {% set seo = craft.seo.custom(siteName, 'Sociaal Woonkrediet', false) %}
+    {% endif -%}
 
-{% set locale = craft.app.locale %}
-{% set locales = craft.app.i18n.siteLocaleIds|without(locale) %}
+    {% set locale = craft.app.locale %}
+    {% set locales = craft.app.i18n.siteLocaleIds|without(locale) %}
 
 <title>{{ seo.title|t({siteName: siteName}) }}</title>
 <meta name="description" content="{{ seo.description }}"/>
@@ -14,10 +17,10 @@
 <meta property="fb:app_id" content="{{ fb.handle }}">
 <meta property="og:url" content="{{ craft.app.request.absoluteUrl }}"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="{{ fb.title|t({siteName: craft.app.config.general.siteName}) }}"/>
+<meta property="og:title" content="{{ fb.title|t({siteName: siteName}) }}"/>
 <meta property="og:image" content="{{ craft.seo.facebookImage(fb.image) }}"/>
 <meta property="og:description" content="{{ fb.description }}"/>
-<meta property="og:site_name" content="{{ seo.title|t({siteName: craft.app.config.general.siteName}) }}"/>
+<meta property="og:site_name" content="{{ seo.title|t({siteName: siteName}) }}"/>
 <meta property="og:locale" content="{{ locale }}"/>
 {% for locale in locales -%}
     <meta property="og:locale:alternate" content="{{ locale }}"/>
@@ -27,9 +30,10 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="{{ tw.handle }}"/>
 <meta name="twitter:url" content="{{ craft.app.request.absoluteUrl }}"/>
-<meta name="twitter:title" content="{{ tw.title|t({siteName: craft.app.config.general.siteName}) }}"/>
+<meta name="twitter:title" content="{{ tw.title|t({siteName: siteName}) }}"/>
 <meta name="twitter:description" content="{{ tw.description }}"/>
 <meta name="twitter:image" content="{{ craft.seo.twitterImage(tw.image) }}"/>
 
 <link rel="home" href="{{ siteUrl }}"/>
 <link rel="canonical" href="{{ craft.app.request.absoluteUrl }}">
+{# SEO End #}
