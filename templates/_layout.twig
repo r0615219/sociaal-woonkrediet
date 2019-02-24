@@ -3,11 +3,11 @@
 <head>
     <title>{{ entry.title }} | {{ siteName }}</title>
     <meta charset="utf-8">
+    {% include '_snippet/_global/_seo' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="{{ alias('@web') }}/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link href="{{ alias('@web') }}/styles/custom.css" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" type="image/png" href="{{ alias('@web') }}/images/favicon.gif"/>
-    {% include '_snippet/_global/_seo' %}
 </head>
 <body>
     {% include '_snippet/_global/_header' %}
@@ -18,7 +18,6 @@
 
 <!-- JAVASCRIPTS -->
 <script src="{{ alias('@web') }}/scripts/jquery.min.js"></script>
-{#<script src="{{ alias('@web') }}/scripts/jquery.mobilemenu.js"></script>#}
 <script src="{{ alias('@web') }}/scripts/jquery.flexslider-min.js"></script>
 <script src="{{ alias('@web') }}/scripts/classie.js"></script>
 <script src="{{ alias('@web') }}/scripts/custom.js"></script>
